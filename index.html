@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X.Me Airdrop คืออะไร? วิธีรับโทเค็น XME ฟรี (แอร์ดรอป คริปโต)</title>
+    <meta name="description" content="คู่มือฉบับสมบูรณ์สำหรับ X.Me Airdrop อธิบายขั้นตอนการรับโทเค็น XME ฟรี, X.Me คืออะไร, และรายละเอียดเกี่ยวกับกิจกรรมแอร์ดรอปคริปโตล่าสุด">
+    <meta name="keywords" content="XME, Airdrop, แอร์ดรอป, X.Me, X.Me Airdrop, คริปโต, รับเหรียญฟรี, โทเค็น, Solana">
+    <!-- Chosen Palette: Calm Tech -->
+    <!-- Application Structure Plan: The SPA is designed as a single-page vertical journey. It starts with a compelling Hero section (What is this?), explains the platform's value (What is X.Me?), details the reward (The XME Token), visualizes the tokenomics with a chart, provides a clear action plan (How to Join), and resolves doubts (FAQ). This structure guides the user logically from awareness to action, making it more engaging than a standard article. -->
+    <!-- Visualization & Content Choices: Tokenomics data (65/25/10 distribution) is presented as an interactive Chart.js donut chart to visually emphasize the large community allocation (Goal: Inform/Compare, Method: Canvas/Chart.js). Platform features and token utilities are shown in a card layout with hover effects for better readability and engagement (Goal: Inform, Method: HTML/CSS). The "How to Join" section is a styled, numbered list to clearly guide the user through the process (Goal: Organize, Method: HTML/CSS). The FAQ uses a JavaScript-powered accordion to save space and provide easy access to information (Goal: Inform, Method: HTML/JS). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800;
+            color: #1e293b; /* text-slate-800 */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* text-lg */
+            color: #475569; /* text-slate-600 */
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 60ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background-color: #334155; /* slate-700 */
+            color: #cbd5e1; /* slate-300 */
+            transition: all 0.2s ease-in-out;
+        }
+        .share-button:hover {
+            background-color: #06b6d4; /* cyan-500 */
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center space-x-2 text-2xl font-bold text-slate-800">
+                        <i data-lucide="sparkles" class="text-cyan-500"></i>
+                        <span>X.ME Airdrop</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-slate-600 hover:text-cyan-500 px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ X.ME</a>
+                        <a href="#tokenomics" class="text-slate-600 hover:text-cyan-500 px-3 py-2 rounded-md text-sm font-medium">โทเค็น XME</a>
+                        <a href="#how-to-join" class="text-slate-600 hover:text-cyan-500 px-3 py-2 rounded-md text-sm font-medium">วิธีเข้าร่วม</a>
+                        <a href="#faq" class="text-slate-600 hover:text-cyan-500 px-3 py-2 rounded-md text-sm font-medium">คำถามที่พบบ่อย</a>
+                    </div>
+                </div>
+                 <div class="hidden md:block">
+                     <a href="https://h5.x.me/invite?code=VEW9QL&user=STEMTV&contentType=A&language=th-TH" target="_blank" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-full hover:bg-cyan-600 transition duration-300">
+                        เข้าร่วมเลย
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-slate-100 inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-600 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-100 focus:ring-cyan-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">เปิดเมนู</span>
+                        <i id="menu-icon-open" data-lucide="menu" class="block h-6 w-6"></i>
+                        <i id="menu-icon-close" data-lucide="x" class="hidden h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-slate-600 hover:bg-slate-100 hover:text-cyan-500 block px-3 py-2 rounded-md text-base font-medium">เกี่ยวกับ X.ME</a>
+                <a href="#tokenomics" class="text-slate-600 hover:bg-slate-100 hover:text-cyan-500 block px-3 py-2 rounded-md text-base font-medium">โทเค็น XME</a>
+                <a href="#how-to-join" class="text-slate-600 hover:bg-slate-100 hover:text-cyan-500 block px-3 py-2 rounded-md text-base font-medium">วิธีเข้าร่วม</a>
+                <a href="#faq" class="text-slate-600 hover:bg-slate-100 hover:text-cyan-500 block px-3 py-2 rounded-md text-base font-medium">คำถามที่พบบ่อย</a>
+                <a href="https://h5.x.me/invite?code=VEW9QL&user=STEMTV&contentType=A&language=th-TH" target="_blank" class="bg-cyan-500 text-white font-bold block w-full text-center mt-2 py-2 px-4 rounded-full hover:bg-cyan-600 transition duration-300">เข้าร่วมเลย</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight">
+                            <span class="block">X.ME <span class="text-cyan-500">แจกฟรี 15 XME</span></span>
+                        </h1>
+                        <p class="mt-6 max-w-lg mx-auto md:mx-0 text-lg text-slate-600">
+                            เข้าร่วม X.Me Airdrop วันนี้! แพลตฟอร์มโซเชียล Web3 ยุคใหม่ที่ให้รางวัลทุกการมีส่วนร่วมของคุณ อย่าพลาดโอกาสรับโทเค็นคริปโต XME ฟรี
+                        </p>
+                        <div class="mt-8 flex justify-center md:justify-start">
+                            <a href="https://h5.x.me/invite?code=VEW9QL&user=STEMTV&contentType=A&language=th-TH" target="_blank" class="text-lg font-bold bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-4 px-10 rounded-full hover:from-cyan-600 hover:to-blue-600 transition duration-300 transform hover:scale-105 shadow-lg animate-pulse">
+                                รับแอร์ดรอปของคุณที่นี่
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <a href="https://h5.x.me/invite?code=VEW9QL&user=STEMTV&contentType=A&language=th-TH" target="_blank" class="block group">
+                            <img src="https://static.bitrue.com/bitrue-cms/upload/large_xme_airdrop_3442878781.jpg" alt="X.ME App Promotion for Airdrop" class="rounded-xl shadow-2xl mx-auto transform transition-transform duration-300 group-hover:scale-105">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">X.Me คืออะไร?</h2>
+                <p class="section-subtitle">
+                    X.Me คือแพลตฟอร์มโซเชียลมีเดียที่ขับเคลื่อนด้วย AI บนบล็อกเชน Solana ซึ่งปฏิวัติวงการโดยการให้รางวัลแก่ผู้ใช้งานสำหรับทุกกิจกรรมบนแพลตฟอร์ม
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="card">
+                        <i data-lucide="edit-3" class="w-12 h-12 mx-auto text-cyan-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Create (สร้างสรรค์)</h3>
+                        <p class="text-slate-600">สร้างสรรค์และแบ่งปันเนื้อหาของคุณได้อย่างอิสระ</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="users" class="w-12 h-12 mx-auto text-cyan-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Connect (เชื่อมต่อ)</h3>
+                        <p class="text-slate-600">เชื่อมต่อกับชุมชนและผู้สร้างเนื้อหาคนอื่นๆ ทั่วโลก</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="gift" class="w-12 h-12 mx-auto text-cyan-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Earn (สร้างรายได้)</h3>
+                        <p class="text-slate-600">รับโทเค็น XME เป็นรางวัลจากการมีส่วนร่วมทุกรูปแบบ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tokenomics Section -->
+        <section id="tokenomics" class="py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">ทุกอย่างเกี่ยวกับโทเค็น XME</h2>
+                <p class="section-subtitle">XME คือหัวใจของระบบนิเวศ X.Me ที่มอบอำนาจและผลตอบแทนคืนสู่ชุมชนผ่านกิจกรรมแอร์ดรอปและอื่นๆ</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-left">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-4">ประโยชน์ของโทเค็น XME</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-lucide="award" class="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-1"></i>
+                                <div><strong class="text-slate-700">รางวัลชุมชน:</strong> รับ XME จากการโพสต์, ไลค์, หรือแชร์</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="vote" class="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-1"></i>
+                                <div><strong class="text-slate-700">สิทธิ์ในการกำกับดูแล:</strong> ร่วมโหวตกำหนดทิศทางของแพลตฟอร์ม</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="send" class="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-1"></i>
+                                <div><strong class="text-slate-700">การโอนมูลค่า:</strong> ใช้สำหรับให้ทิป, ซื้อสินค้า หรือเข้าถึงเนื้อหาพิเศษ</div>
+                            </li>
+                             <li class="flex items-start">
+                                <i data-lucide="box" class="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-1"></i>
+                                <div><strong class="text-slate-700">พัฒนาระบบนิเวศ:</strong> สนับสนุนโปรเจกต์ใหม่ๆ ให้เติบโต</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card">
+                             <h3 class="text-2xl font-bold text-slate-800 mb-4 text-center">สัดส่วนการกระจายโทเค็น</h3>
+                             <div class="chart-container">
+                                <canvas id="tokenomicsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Join Section -->
+        <section id="how-to-join" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">วิธีเข้าร่วม Airdrop ง่ายๆ ใน 4 ขั้นตอน</h2>
+                <p class="section-subtitle">ทำตามขั้นตอนต่อไปนี้เพื่อรับโทเค็น XME ของคุณ และเริ่มต้นการเดินทางบน X.Me</p>
+                <div class="max-w-3xl mx-auto">
+                    <ol class="space-y-8 relative border-l-2 border-slate-200 ml-4">
+                        <li class="ml-8">
+                            <span class="absolute -left-4 flex items-center justify-center bg-cyan-500 text-white w-8 h-8 rounded-full ring-8 ring-white">1</span>
+                            <h3 class="text-xl font-bold text-slate-800">ดาวน์โหลดแอป</h3>
+                            <p class="text-slate-600">เริ่มต้นโดยการกดลิงก์และติดตั้งแอป X.Me ผ่าน App Store หรือ Google Play</p>
+                             <a href="https://h5.x.me/invite?code=VEW9QL&user=STEMTV&contentType=A&language=th-TH" target="_blank" class="inline-block mt-2 text-cyan-600 font-semibold hover:underline">ไปยังหน้ารับ Airdrop →</a>
+                        </li>
+                        <li class="ml-8">
+                            <span class="absolute -left-4 flex items-center justify-center bg-cyan-500 text-white w-8 h-8 rounded-full ring-8 ring-white">2</span>
+                            <h3 class="text-xl font-bold text-slate-800">ลงทะเบียนและใช้งาน</h3>
+                            <p class="text-slate-600">สร้างบัญชีผู้ใช้ของคุณและเริ่มต้นสำรวจฟีเจอร์ต่างๆ บนแพลตฟอร์ม</p>
+                        </li>
+                        <li class="ml-8">
+                            <span class="absolute -left-4 flex items-center justify-center bg-cyan-500 text-white w-8 h-8 rounded-full ring-8 ring-white">3</span>
+                            <h3 class="text-xl font-bold text-slate-800">เข้าร่วมกิจกรรม</h3>
+                            <p class="text-slate-600">ทำภารกิจง่ายๆ เช่น เข้าร่วม Daily Lottery หรือเชิญเพื่อนเพื่อสะสมโทเค็น XME เพิ่มเติม</p>
+                        </li>
+                         <li class="ml-8">
+                            <span class="absolute -left-4 flex items-center justify-center bg-cyan-500 text-white w-8 h-8 rounded-full ring-8 ring-white">4</span>
+                            <h3 class="text-xl font-bold text-slate-800">เชื่อมต่อ Wallet</h3>
+                            <p class="text-slate-600">เชื่อมต่อกระเป๋าเงิน Solana ของคุณ (เช่น Phantom) เพื่อเตรียมรับรางวัล Airdrop</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">คำถามที่พบบ่อย (FAQ)</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="faq-item bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left text-lg font-semibold p-5 focus:outline-none">
+                            <span>X.Me Airdrop คืออะไร?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-5 pt-0 text-slate-600">
+                            <p>X.Me Airdrop คือแคมเปญรางวัลที่ผู้ใช้สามารถรับโทเค็น XME ฟรี โดยการทำภารกิจง่ายๆ เช่น ดาวน์โหลดแอป, ลงทะเบียน, และเข้าร่วมกิจกรรมบนแพลตฟอร์ม</p>
+                        </div>
+                    </div>
+                     <div class="faq-item bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left text-lg font-semibold p-5 focus:outline-none">
+                            <span>ฉันต้องใช้ Wallet อะไร?</span>
+                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-5 pt-0 text-slate-600">
+                            <p>คุณต้องใช้กระเป๋าเงินดิจิทัลที่รองรับบล็อกเชน Solana เช่น Phantom, Solflare, หรือ Backpack เพื่อรับโทเค็น XME จากแอร์ดรอปนี้</p>
+                        </div>
+                    </div>
+                     <div class="faq-item bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left text-lg font-semibold p-5 focus:outline-none">
+                            <span>จะสร้างรายได้เพิ่มเติมได้อย่างไร?</span>
+                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-5 pt-0 text-slate-600">
+                            <p>นอกจากการเข้าร่วม Airdrop แล้ว คุณยังสามารถสร้างรายได้จากการมีส่วนร่วมอย่างสม่ำเสมอ, การเชิญเพื่อนมาใช้งานแพลตฟอร์ม, และการเข้าร่วมกิจกรรมพิเศษต่างๆ ที่จะประกาศในอนาคต</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- About Column -->
+                <div class="md:col-span-1">
+                    <h4 class="text-lg font-bold text-white mb-4">STEMTVx1</h4>
+                    <p class="text-sm">CEO: STEMTVx1<br>ชุมชนคริปโต XME</p>
+                </div>
+                <!-- Quick Links Column -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">ลิงก์ด่วน</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-cyan-400 transition-colors">เกี่ยวกับ X.ME</a></li>
+                        <li><a href="#tokenomics" class="hover:text-cyan-400 transition-colors">โทเค็น XME</a></li>
+                        <li><a href="#how-to-join" class="hover:text-cyan-400 transition-colors">วิธีเข้าร่วม</a></li>
+                        <li><a href="#faq" class="hover:text-cyan-400 transition-colors">คำถามที่พบบ่อย</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Column -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">ติดต่อและติดตาม</h4>
+                    <ul class="space-y-2">
+                         <li>
+                            <a href="https://x.com/stemtv_v1" target="_blank" class="flex items-center hover:text-cyan-400 transition-colors">
+                                <i data-lucide="twitter" class="w-5 h-5 mr-2"></i>
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:yoigame887@gmail.com" class="flex items-center hover:text-cyan-400 transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                                yoigame887@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Share Column -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">แชร์หน้านี้</h4>
+                    <div class="flex space-x-3" id="share-buttons">
+                        <a href="#" class="share-button" data-platform="facebook" aria-label="Share on Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="share-button" data-platform="twitter" aria-label="Share on Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="share-button" data-platform="linkedin" aria-label="Share on LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <button class="share-button" id="copy-link-button" aria-label="Copy link"><i data-lucide="link" class="w-5 h-5"></i></button>
+                    </div>
+                     <p id="copy-success-msg" class="text-cyan-400 text-sm mt-2 hidden">คัดลอกลิงก์แล้ว!</p>
+                </div>
+            </div>
+            <div class="mt-10 border-t border-slate-700 pt-8 text-center text-sm">
+                <p>ลิขสิทธิ์ © 2025 STEMTVx1. สงวนลิขสิทธิ์.</p>
+                <p class="mt-1">ข้อมูลเกี่ยวกับ XME Airdrop (แอร์ดรอป) นี้จัดทำเพื่อเป็นข้อมูลเบื้องต้นเท่านั้น</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+        
+        // Chart.js - Tokenomics Donut Chart
+        const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+        const tokenomicsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Airdrop', 'XME Foundation', 'Team'],
+                datasets: [{
+                    label: 'Token Distribution',
+                    data: [65, 25, 10],
+                    backgroundColor: [
+                        '#06b6d4', // cyan-500
+                        '#334155', // slate-700
+                        '#f59e0b'  // amber-500
+                    ],
+                    borderColor: '#f8fafc',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#475569', // text-slate-600
+                            font: {
+                                size: 14,
+                                family: "'Sarabun', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            const icon = question.querySelector('i');
+
+            question.addEventListener('click', () => {
+                const isHidden = answer.classList.contains('hidden');
+                
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.classList.add('hidden');
+                        ans.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if(isHidden) {
+                    answer.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    answer.classList.add('hidden');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Share functionality
+        const shareButtons = document.getElementById('share-buttons');
+        const copyButton = document.getElementById('copy-link-button');
+        const copySuccessMsg = document.getElementById('copy-success-msg');
+        
+        const pageUrl = window.location.href;
+        const pageTitle = document.title;
+        
+        shareButtons.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = e.target.closest('a');
+            if (!target) return;
+
+            const platform = target.dataset.platform;
+            let shareUrl = '';
+
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(pageTitle)}`;
+                    break;
+            }
+
+            if(shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        });
+
+        copyButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = pageUrl;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            copySuccessMsg.classList.remove('hidden');
+            setTimeout(() => {
+                copySuccessMsg.classList.add('hidden');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
